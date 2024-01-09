@@ -289,6 +289,10 @@ export default {
             ['org.gnome.Nautilus', 'Files'],
             ['libreoffice-writer', 'Writer'],
             ['', 'Desktop'],
+            ["org.kde.dolphin", "Dolphin"],
+            ["com.nextcloud.desktopclient.nextcloud", "Nextcloud"],
+            ['com.rtosta.zapzap', 'Whatsapp'],
+            ['org.kde.okular', 'Okular'],
         ],
     },
 };

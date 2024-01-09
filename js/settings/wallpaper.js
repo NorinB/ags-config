@@ -17,6 +17,8 @@ export function wallpaper() {
     execAsync([
         'swww', 'img',
         '--transition-type', 'grow',
+        '--transition-fps', '144',
+        '--transition-step', '255',
         '--transition-pos', exec('hyprctl cursorpos').replace(' ', ''),
         options.desktop.wallpaper.img.value,
     ]).catch(err => console.error(err));

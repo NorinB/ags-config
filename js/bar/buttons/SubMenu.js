@@ -52,6 +52,9 @@ export default ({ children, direction = 'left', items = Variable(0) }) => {
         child: Widget.Box({
             children,
         }),
+        setup: (self) => {
+            self.reveal_child = true;
+        }
     });
 
     return Widget.Box({
