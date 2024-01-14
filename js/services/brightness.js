@@ -45,12 +45,21 @@ class Brightness extends Service {
         if (percent > 1)
             percent = 1;
 
-        Utils.execAsync(`brightnessctl s ${percent * 100}% -q`)
+        // Utils.execAsync(`brightnessctl s ${percent * 100}% -q`)
+        //     .then(() => {
+        //         this.#screen = percent;
+        //         this.changed('screen');
+        //     })
+        //     .catch(console.error);
+        
+        for (let i = 1; i <= 3; i++) {
+            Utils.execAsync(`ddcutil setvcp 10 ${percent * 100 | 0} --display=${i}`)
             .then(() => {
                 this.#screen = percent;
                 this.changed('screen');
             })
             .catch(console.error);
+        }
     }
 
     constructor() {
