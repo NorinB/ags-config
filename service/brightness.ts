@@ -40,10 +40,17 @@ class Brightness extends Service {
         if (percent > 1)
             percent = 1
 
-        sh(`brightnessctl set ${Math.floor(percent * 100)}% -q`).then(() => {
+        // sh(`brightnessctl set ${Math.floor(percent * 100)}% -q`).then(() => {
+        //     this.#screen = percent
+        //     this.changed("screen")
+        // })
+        
+        for (let i = 0; i <= 3; i++) {
+          sh(`ddcutil setvcp 10 ${Math.floor(percent * 100) | 0} --display=${i}`).then(() => {
             this.#screen = percent
             this.changed("screen")
-        })
+          })
+        }
     }
 
     constructor() {
