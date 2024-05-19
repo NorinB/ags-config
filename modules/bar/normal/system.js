@@ -183,6 +183,7 @@ const BatteryModule = () =>
             Label({
               label: "Weather",
             }),
+            BarGroup({ child: Utilities() }),
           ],
           setup: (self) =>
             self.poll(900000, async (self) => {
@@ -278,6 +279,6 @@ export default () =>
     onPrimaryClick: () => App.toggleWindow("sideright"),
     child: Widget.Box({
       className: "spacing-h-4",
-      children: [BarGroup({ child: BarClock() }), BatteryModule(), Utilities()],
+      children: [BarGroup({ child: BarClock() }), BatteryModule()],
     }),
   });
