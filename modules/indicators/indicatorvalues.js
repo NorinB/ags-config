@@ -76,7 +76,7 @@ export default (monitor = 0) => {
                     volumeIndicator.attribute.headphones = usingHeadphones;
                     self.label = usingHeadphones ? 'Headphones' : 'Speakers';
                     // Indicator.popup(1);
-                }
+                } 
             }
             self.hook(Audio, updateAudioDevice);
             Utils.timeout(1000, updateAudioDevice);
@@ -108,5 +108,7 @@ export default (monitor = 0) => {
                 volumeIndicator,
             ]
         })
+    }).hook(Audio.speaker, () => {
+      indicator.popup(1);
     });
 }
