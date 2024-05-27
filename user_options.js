@@ -42,6 +42,9 @@ const userConfigOptions = {
     wsNumScale: 0.09,
     wsNumMarginScale: 0.07,
   },
+  dock: {
+    enabled: true,
+  }
 };
 
 export default userConfigOptions;
