@@ -4,47 +4,64 @@
 //   options listed in this file will override the default ones in the above file
 
 const userConfigOptions = {
-  apps: {
-    bluetooth: "blueman-manager",
-    imageViewer: "gwenview",
-    network: 'XDG_CURRENT_DESKTOP="gnome" gnome-control-center wifi',
-    settings: 'XDG_CURRENT_DESKTOP="gnome" gnome-control-center wifi',
-    taskManager: "btop",
-    terminal: "alacritty", // This is only for shell actions
-  },
-  brightness: {
-    // Object of controller names for each monitor, either "brightnessctl" or "ddcutil" or "auto"
-    // 'default' one will be used if unspecified
-    // Examples
-    // 'eDP-1': "brightnessctl",
-    // 'DP-1': "ddcutil",
-    controllers: {
-      default: "ddcutil",
-      "DP-2": "ddcutil",
-      "HDMI-A-4": "ddcutil",
-      "DP-4": "ddcutil",
+    apps: {
+        bluetooth: 'blueman-manager',
+        imageViewer: 'gwenview',
+        network: 'XDG_CURRENT_DESKTOP="gnome" gnome-control-center wifi',
+        settings: 'XDG_CURRENT_DESKTOP="gnome" gnome-control-center wifi',
+        taskManager: 'btop',
+        terminal: 'alacritty', // This is only for shell actions
     },
-  },
-  music: {
-    preferredPlayer: "spotify",
-  },
-  keybinds: {
-    sidebar: {
-      pin: "Ctrl+p",
-      nextTab: "Ctrl+Page_Down",
-      prevTab: "Ctrl+Page_Up",
+    brightness: {
+        // Object of controller names for each monitor, either "brightnessctl" or "ddcutil" or "auto"
+        // 'default' one will be used if unspecified
+        // Examples
+        // 'eDP-1': "brightnessctl",
+        // 'DP-1': "ddcutil",
+        controllers: {
+            default: 'ddcutil',
+            'DP-2': 'ddcutil',
+            'HDMI-A-4': 'ddcutil',
+            'DP-4': 'ddcutil',
+        },
     },
-  },
-  overview: {
-    scale: 0.1, // Relative to screen size
-    numOfRows: 2,
-    numOfCols: 5,
-    wsNumScale: 0.09,
-    wsNumMarginScale: 0.07,
-  },
-  dock: {
-    enabled: true,
-  }
+    music: {
+        preferredPlayer: 'spotify',
+    },
+    keybinds: {
+        sidebar: {
+            pin: 'Ctrl+p',
+            nextTab: 'Ctrl+Page_Down',
+            prevTab: 'Ctrl+Page_Up',
+        },
+    },
+    overview: {
+        scale: 0.1, // Relative to screen size
+        numOfRows: 2,
+        numOfCols: 5,
+        wsNumScale: 0.09,
+        wsNumMarginScale: 0.07,
+    },
+    dock: {
+        enabled: true,
+        hiddenThickness: 5,
+        pinnedApps: ['dolphin', 'spotify', 'brave'],
+        layer: 'top',
+        monitorExclusivity: true, // Dock will move to other monitor along with focus if enabled
+        searchPinnedAppIcons: false, // Try to search for the correct icon if the app class isn't an icon name
+        trigger: ['client-added', 'client-removed'], // client_added, client_move, workspace_active, client_active
+        // Automatically hide dock after `interval` ms since trigger
+        autoHide: [
+            {
+                trigger: 'client-added',
+                interval: 500,
+            },
+            {
+                trigger: 'client-removed',
+                interval: 500,
+            },
+        ],
+    },
 };
 
 export default userConfigOptions;
