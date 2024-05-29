@@ -49,17 +49,17 @@ const userConfigOptions = {
         layer: 'top',
         monitorExclusivity: true, // Dock will move to other monitor along with focus if enabled
         searchPinnedAppIcons: false, // Try to search for the correct icon if the app class isn't an icon name
-        trigger: ['client-added', 'client-removed'], // client_added, client_move, workspace_active, client_active
+        trigger: [], // client_added, client_move, workspace_active, client_active, client_removed
         // Automatically hide dock after `interval` ms since trigger
         autoHide: [
-            {
-                trigger: 'client-added',
-                interval: 500,
-            },
-            {
-                trigger: 'client-removed',
-                interval: 500,
-            },
+            // {
+            //     trigger: 'client-added',
+            //     interval: 500,
+            // },
+            // {
+            //     trigger: 'client-removed',
+            //     interval: 500,
+            // },
         ],
     },
 };
