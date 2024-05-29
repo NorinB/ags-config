@@ -110,5 +110,5 @@ export default (monitor = 0) => {
         })
     }).hook(Audio.speaker, () => {
       indicator.popup(1);
-    });
+    }, 'notify::volume');
 }
