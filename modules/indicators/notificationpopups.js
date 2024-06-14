@@ -4,6 +4,8 @@ import Notifications from 'resource:///com/github/Aylur/ags/service/notification
 const { Box } = Widget;
 import Notification from '../.commonwidgets/notification.js';
 
+Notifications.popupTimeout = 4000;
+
 export default () => Box({
     vertical: true,
     hpack: 'center',
