@@ -28,7 +28,7 @@ let configOptions = {
         'keyboardUseFlag': false, // Use flag emoji instead of abbreviation letters
         'layerSmoke': false,
         'layerSmokeStrength': 0.2,
-        'fakeScreenRounding': true,
+        'fakeScreenRounding': 1, // 0: None | 1: Always | 2: When not fullscreen
     },
     'apps': {
         'bluetooth': "blueberry",
@@ -53,10 +53,7 @@ let configOptions = {
         // 'eDP-1': "brightnessctl",
         // 'DP-1': "ddcutil",
         'controllers': {
-            default: 'ddcutil',
-            'DP-2': 'ddcutil',
-            'HDMI-A-4': 'ddcutil',
-            'DP-4': 'ddcutil',
+            'default': "auto",
         },
     },
     'gaming': {
@@ -96,6 +93,14 @@ let configOptions = {
 
     },
     'search': {
+        'enableFeatures': {
+            'actions': true,
+            'commands': true,
+            'mathResults': true,
+            'directorySearch': true,
+            'aiSearch': true,
+            'webSearch': true,
+        },
         'engineBaseUrl': "https://www.google.com/search?q=",
         'excludedSites': ["quora.com"],
     },
@@ -111,6 +116,7 @@ let configOptions = {
     },
     'weather': {
         'city': "",
+        'preferredUnit': "C", // Either C or F
     },
     'workspaces': {
         'shown': 10,
@@ -118,21 +124,21 @@ let configOptions = {
     'dock': {
         'enabled': false,
         'hiddenThickness': 5,
-        'pinnedApps': ['dolphin', 'spotify', 'brave'],
+        'pinnedApps': ['firefox', 'org.gnome.Nautilus'],
         'layer': 'top',
         'monitorExclusivity': true, // Dock will move to other monitor along with focus if enabled
         'searchPinnedAppIcons': false, // Try to search for the correct icon if the app class isn't an icon name
-        'trigger': [], // client_added, client_move, workspace_active, client_active
+        'trigger': ['client-added', 'client-removed'], // client_added, client_move, workspace_active, client_active
         // Automatically hide dock after `interval` ms since trigger
         'autoHide': [
-            // {
-            //     'trigger': 'client-added',
-            //     'interval': 500,
-            // },
-            // {
-            //     'trigger': 'client-removed',
-            //     'interval': 500,
-            // },
+            {
+                'trigger': 'client-added',
+                'interval': 500,
+            },
+            {
+                'trigger': 'client-removed',
+                'interval': 500,
+            },
         ],
     },
     // Longer stuff
@@ -188,19 +194,27 @@ let configOptions = {
             'prevTab': "Ctrl+Page_Up",
         },
         'cheatsheet': {
-            'nextTab': "Page_Down",
-            'prevTab': "Page_Up",
+            'keybinds': {
+                'nextTab': "Page_Down",
+                'prevTab': "Page_Up",
+            },
+            'nextTab': "Ctrl+Page_Down",
+            'prevTab': "Ctrl+Page_Up",
         }
     },
 }
 
 // Override defaults with user's options
 let optionsOkay = true;
-function overrideConfigRecursive(userOverrides, configOptions = {}) {
+function overrideConfigRecursive(userOverrides, configOptions = {}, check = true) {
     for (const [key, value] of Object.entries(userOverrides)) {
-        if (configOptions[key] === undefined) optionsOkay = false;
-        else if (typeof value === 'object') {
-            overrideConfigRecursive(value, configOptions[key]);
+        if (configOptions[key] === undefined && check) {
+            optionsOkay = false;
+        }
+        else if (typeof value === 'object' && !(value instanceof Array)) {
+            if (key === "substitutions" || key === "regexSubstitutions") {
+                overrideConfigRecursive(value, configOptions[key], false);
+            } else overrideConfigRecursive(value, configOptions[key]);
         } else {
             configOptions[key] = value;
         }

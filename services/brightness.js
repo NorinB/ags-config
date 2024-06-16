@@ -172,9 +172,6 @@ class BrightnessCommandLineService {
   }
 }
 
-let test = new BrightnessCommandLineService(service);
-test.screen_value += 0.05;
-
 // make it global for easy use with cli
 globalThis.brightness = new BrightnessCommandLineService(service);
 

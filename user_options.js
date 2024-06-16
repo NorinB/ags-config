@@ -4,6 +4,9 @@
 //   options listed in this file will override the default ones in the above file
 
 const userConfigOptions = {
+    appearance: {
+        'fakeScreenRounding': 2, // 0: None | 1: Always | 2: When not fullscreen
+    },
     apps: {
         bluetooth: 'blueman-manager',
         imageViewer: 'gwenview',
@@ -20,9 +23,6 @@ const userConfigOptions = {
         // 'DP-1': "ddcutil",
         controllers: {
             default: 'ddcutil',
-            'DP-2': 'ddcutil',
-            'HDMI-A-4': 'ddcutil',
-            'DP-4': 'ddcutil',
         },
     },
     music: {
