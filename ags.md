@@ -79,6 +79,7 @@
 - Utilities (Screenshot, Color Picker und Screen Kayboard) aktiviert in `modules/bar/normal/system.js`
 - Pastel Yellow colors in `scss/_material.scss`
 - Popup Volume on Volume change in `modules/indicators/indicatorvalues.js` mit `hook` Methode
+- "Feels like" Temperaturanzeige entfernt in `modules/bar/normal/system.js`
 
 ## Config von [Aylur](https://github.com/Aylur/dotfiles)
 ### AGS (neue config)
