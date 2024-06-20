@@ -5,7 +5,7 @@
 
 const userConfigOptions = {
     appearance: {
-        'fakeScreenRounding': 2, // 0: None | 1: Always | 2: When not fullscreen
+        fakeScreenRounding: 2, // 0: None | 1: Always | 2: When not fullscreen
     },
     apps: {
         bluetooth: 'blueman-manager',
@@ -41,6 +41,16 @@ const userConfigOptions = {
         numOfCols: 5,
         wsNumScale: 0.09,
         wsNumMarginScale: 0.07,
+    },
+    time: {
+        // See https://docs.gtk.org/glib/method.DateTime.format.html
+        // Here's the 12h format: "%I:%M%P"
+        // For seconds, add "%S" and set interval to 1000
+        format: '%H:%M',
+        interval: 5000,
+        dateFormatLong: '%a, %d. %B', // On bar
+        dateInterval: 5000,
+        dateFormat: '%d. %B', // On notif time
     },
     dock: {
         enabled: true,
