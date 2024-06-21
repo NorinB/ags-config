@@ -6,16 +6,17 @@ import SystemWidget from './system.js'
 
 export default (monitor) => Widget.Window({
     name: `desktopbackground${monitor}`,
-    // anchor: ['top', 'bottom', 'left', 'right'],
+    anchor: ['top', 'bottom', 'left', 'right'],
     layer: 'background',
+    monitor: monitor,
     exclusivity: 'ignore',
     visible: true,
     child: Widget.Overlay({
-        child: WallpaperImage(monitor),
-        // child: Widget.Box({}),
+        // child: WallpaperImage(monitor),
+        child: Widget.Box({}),
         overlays: [
             TimeAndLaunchesWidget(),
-            SystemWidget(),
+            // SystemWidget(),
         ],
         setup: (self) => {
             self.set_overlay_pass_through(self.get_children()[1], true);

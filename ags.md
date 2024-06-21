@@ -80,6 +80,7 @@
 - Pastel Yellow colors in `scss/_material.scss`
 - Popup Volume on Volume change in `modules/indicators/indicatorvalues.js` mit `hook` Methode
 - "Feels like" Temperaturanzeige entfernt in `modules/bar/normal/system.js`
+- Zeit und Datum auf Desktop in `config.js` (das mit forMonitor(DesktopBackground) einkommentieren) und in `modules/desktopbackground/main.js` Anpassungen, damit es auf jedem Monitor angezeigt wird
 
 ## Config von [Aylur](https://github.com/Aylur/dotfiles)
 ### AGS (neue config)
