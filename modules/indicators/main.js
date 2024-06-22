@@ -4,9 +4,12 @@ import IndicatorValues from './indicatorvalues.js';
 import MusicControls from './musiccontrols.js';
 import ColorScheme from './colorscheme.js';
 import NotificationPopups from './notificationpopups.js';
+import { generateWindowName } from '../../utils/window-names.js';
+
+export const INDICATOR_WINDOW_BASE_NAME = "indicator";
 
 export default (monitor = 0) => Widget.Window({
-    name: `indicator${monitor}`,
+    name: generateWindowName(INDICATOR_WINDOW_BASE_NAME, monitor),
     monitor,
     className: 'indicator',
     layer: 'overlay',

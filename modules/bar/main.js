@@ -9,6 +9,7 @@ import System from "./normal/system.js";
 import { enableClickthrough } from "../.widgetutils/clickthrough.js";
 import { RoundedCorner } from "../.commonwidgets/cairo_roundedcorner.js";
 import { currentShellMode } from '../../variables.js';
+import { generateWindowName } from '../../utils/window-names.js';
 
 const NormalOptionalWorkspaces = async () => {
     try {
@@ -33,6 +34,8 @@ const FocusOptionalWorkspaces = async () => {
         }
     }
 };
+
+export const BAR_WINDOW_BASE_NAME = "bar";
 
 export const Bar = async (monitor = 0) => {
     const SideModule = (children) => Widget.Box({
@@ -87,7 +90,7 @@ export const Bar = async (monitor = 0) => {
     })
     return Widget.Window({
         monitor,
-        name: `bar${monitor}`,
+        name: generateWindowName(BAR_WINDOW_BASE_NAME, monitor),
         anchor: ['top', 'left', 'right'],
         exclusivity: 'exclusive',
         visible: true,
@@ -108,9 +111,11 @@ export const Bar = async (monitor = 0) => {
     });
 }
 
+export const BAR_CORNER_TOP_LEFT_WINDOW_BASE_NAME = "barcornertl";
+
 export const BarCornerTopleft = (monitor = 0) => Widget.Window({
     monitor,
-    name: `barcornertl${monitor}`,
+    name: generateWindowName(BAR_CORNER_TOP_LEFT_WINDOW_BASE_NAME, monitor),
     layer: 'top',
     anchor: ['top', 'left'],
     exclusivity: 'normal',
@@ -118,9 +123,12 @@ export const BarCornerTopleft = (monitor = 0) => Widget.Window({
     child: RoundedCorner('topleft', { className: 'corner', }),
     setup: enableClickthrough,
 });
+
+export const BAR_CORNER_TOP_RIGHT_WINDOW_BASE_NAME = "barcornertr";
+
 export const BarCornerTopright = (monitor = 0) => Widget.Window({
     monitor,
-    name: `barcornertr${monitor}`,
+    name: generateWindowName(BAR_CORNER_TOP_RIGHT_WINDOW_BASE_NAME, monitor),
     layer: 'top',
     anchor: ['top', 'right'],
     exclusivity: 'normal',

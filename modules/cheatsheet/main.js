@@ -6,6 +6,9 @@ import PeriodicTable from "./periodictable.js";
 import { ExpandingIconTabContainer } from '../.commonwidgets/tabcontainer.js';
 import { checkKeybind } from '../.widgetutils/keybind.js';
 import clickCloseRegion from '../.commonwidgets/clickcloseregion.js';
+import { generateWindowName } from '../../utils/window-names.js';
+
+export const CHEATSHEET_WINDOW_BASE_NAME = "cheatsheet";
 
 const cheatsheets = [
     {
@@ -99,7 +102,7 @@ export default (id) => {
     });
     return PopupWindow({
         monitor: id,
-        name: `cheatsheet${id}`,
+        name: generateWindowName(CHEATSHEET_WINDOW_BASE_NAME, id),
         layer: 'overlay',
         keymode: 'on-demand',
         visible: false,

@@ -8,7 +8,6 @@ const { Box, Label, Scrollable } = Widget;
 const HYPRLAND_KEYBIND_CONFIG_FILE = `${GLib.get_user_config_dir()}/hypr/configs/keybinds.conf`;
 const KEYBIND_SECTIONS_PER_PAGE = 3;
 const path = `${App.configDir}/scripts/hyprland/get_keybinds.py --path ${HYPRLAND_KEYBIND_CONFIG_FILE}`;
-console.log(path);
 const keybindList = JSON.parse(
     Utils.exec(
         path,
