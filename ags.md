@@ -5,64 +5,109 @@
 - Auf die Seite von von den dots gehen: https://github.com/end-4/dots-hyprland
 - im [Wiki](https://end-4.github.io/dots-hyprland-wiki/en/i-i/01setup/#manual-installation-basically-any-distro) den Anweisungen folgen für die manuelle Installation
 - repo in "~/.cache/dots-hyprland" packen
-#### zusätzlich benötigte Packages(die nicht schon in [packages.md](./packages.md) sind oder durch base Installation schon vorhanden sind):
+#### Packages:
+##### AGS Stuff
+    - gjs
+    - glib2
+    - glib2-devel
+    - glibc
+    - gtk3
+    - gtk-layer-shell
+    - libpulse
+    - pam
+    - gnome-blueooth-3.0
+    - greetd
+    - libdmusmenu-gtk3
+    - libsoup3
+    - libnotify
+    - networkmanager
+    - power-profiles-daemon
+    - upower
 ##### Base
     - axel
     - bc
     - coreutils
+    - cliphist
+    - cmake
+    - curl
     - fuzzel
-    - jq
-    - gojq
-    - npm
-    - typescript
     - rsync
+    - wget
+    - ripgrep
+    - jq
+    - npm
+    - meson
+    - typescript
     - gjs
-##### Make dependencies of MicroTeX
-    - tinyxml2 
-    - gtkmm3
-    - gtksourceviewmm
-    - cairomm
-##### Python
-    - python-build
-    - python-pillow
-    - python-pywal
-    - python-setuptools-scm
-    - python-wheel
-##### Player and Audio
-    - libdusmenu-gtk3
-    - plasma-browser-integration
-##### GTK
-    - webp-pixbuf-loader
-    - gtk-layer-shell
-    - gtk3
-    - gtksourceview3 gobject-introspection
-    - upower
-    - yad
-    - ydotool
-    - xdg-user-dirs-gtk
-##### Gnome
-    - polkit-gnome
-    - gnome-control-center
-    - gammastep
-##### Widgets
-    - dart-sass
-    - python-pywayland
-    - python-psutil
-    - hypridle-git
-    - hyprlock-git
-    - hyprpicker-git
-    - anyrun-git
-##### Fonts and Themes
-    - fontconfig
+    - xdg-user-dirs
+##### Audio
+    - pavucontrol
+    - wireplumber
+    - libdmusmenu-gtk3
+    - playerctl
+    - swww
+##### Brightness
+    - brightnessctl
+    - ddcutil
+##### Fonts
+    - adw-gtk3-git
+    - qt5ct
     - qt5-wayland
+    - fontconfig
     - ttf-readex-pro
     - ttf-jetbrains-mono-nerd
     - ttf-material-symbols-variable-git
     - ttf-space-mono-nerd
-    - starhsip
-##### Screenshot and Recorder
-    - tesseract
-    - tesseract-data-eng
+    - ttf-rubik-vf
+    - ttf-gabarito-git
+    - foot
+##### Gnome
+    - polkit-gnome
+    - gnome-keyring
+    - gnome-control-center
+    - blueberry networkmanager
+    - gammastep
+##### GTK
+    - webp-pixbuf-loader
+    - gtksourceview3
+    - gobject-introspection
+    - yad
+    - ydotool
+    - xdg-user-dirs-gtk
+##### Microtex
+    - tinyxml2
+	- gtkmm3
+	- gtksourceviewmm
+	- cairomm
+##### Pymyc
+    - python-materialyoucolor-git
+	- gradience-git
+	- python-libsass
+	- python-material-color-utilities
+##### Python
+	- python-build
+	- python-pillow
+	- python-pywal
+	- python-setuptools-scm
+	- python-wheel
+##### Screencapture
+	- swappy
+	- wf-recorder
+	- grim
+	- tesseract
+	- tesseract-data-eng
+	- slurp
+##### Widgets
+	- dart-sass
+	- python-pywayland
+	- python-psutil
+	- hypridle-git
+ 	- hyprutils-git
+	- hyprlock-git
+	- wlogout
+	- wl-clipboard
+	- hyprpicker-git
+	- anyrun-git
 
 ### Update
 - den Anweisungen im [Wiki](https://end-4.github.io/dots-hyprland-wiki/en/i-i/01setup/) folgen, Abschnitt "3 Updating"
@@ -70,7 +115,6 @@
     - git pull in Repo (~/.cache/dots-hyprland/)
     - ags config rüberholen ins eigene ags-repo (und dann updaten je nachdem, was ich verändert hab bei mir selbst)
         - dabei achten, dass `user_options.js` im root von ags bleibt, weil das die eigenen Options sind
-    - im Repo update-ags.sh ausführen
 
 ### Eigene Anpassungen
 - Custom Options gesetzt in `user_options.js`
@@ -82,6 +126,15 @@
 - "Feels like" Temperaturanzeige entfernt in `modules/bar/normal/system.js`
 - Zeit und Datum auf Desktop in `config.js` (das mit forMonitor(DesktopBackground) einkommentieren) und in `modules/desktopbackground/main.js` Anpassungen, damit es auf jedem Monitor angezeigt wird
 - Monitor-Attached Reload von AGS Windows in `config.js` und `services/monitor.js` 
+
+
+
+
+
+
+
+
+
 
 ## Config von [Aylur](https://github.com/Aylur/dotfiles)
 ### AGS (neue config)
