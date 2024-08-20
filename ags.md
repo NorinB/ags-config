@@ -50,7 +50,6 @@
     - brightnessctl
     - ddcutil
 ##### Fonts
-    - adw-gtk3-git
     - qt5ct
     - qt5-wayland
     - fontconfig
