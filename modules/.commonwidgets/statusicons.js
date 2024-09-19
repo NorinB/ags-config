@@ -11,6 +11,8 @@ import { languages } from './statusicons_languages.js';
 
 // A guessing func to try to support langs not listed in data/languages.js
 function isLanguageMatch(abbreviation, word) {
+    if (!abbreviation) return false;
+
     const lowerAbbreviation = abbreviation.toLowerCase();
     const lowerWord = word.toLowerCase();
     let j = 0;

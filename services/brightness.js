@@ -67,8 +67,9 @@ class BrightnessDdcService extends BrightnessServiceBase {
 
     monitorName = "";
 
-    constructor(busNum) {
+    constructor(busNum, monitorName) {
         super();
+        this.monitorName = monitorName;
         this._busNum = busNum;
         Utils.execAsync(`ddcutil -b ${this._busNum} getvcp 10 --brief`)
             .then((out) => {
@@ -99,7 +100,7 @@ async function listDdcMonitorsSnBus() {
             if (!reg.test(display))
                 return;
             const lines = display.split('\n');
-            const sn = lines[3].split(':')[3];
+            const sn = lines[2].split('card2-')[1];
             const busNum = lines[1].split('/dev/i2c-')[1];
             ddcSnBus[sn] = busNum;
         });
@@ -115,7 +116,7 @@ const service = Array(numMonitors);
 const ddcSnBus = await listDdcMonitorsSnBus();
 for (let i = 0; i < service.length; i++) {
     const monitorName = Hyprland.monitors[i].name;
-    const monitorSn = Hyprland.monitors[i].serial;
+    // const monitorSn = Hyprland.monitors[i].serial;
     const preferredController = userOptions.brightness.controllers[monitorName]
         || userOptions.brightness.controllers.default || "auto";
     if (preferredController) {
@@ -124,11 +125,11 @@ for (let i = 0; i < service.length; i++) {
                 service[i] = new BrightnessCtlService();
                 break;
             case "ddcutil":
-                service[i] = new BrightnessDdcService(ddcSnBus[monitorSn], monitorName);
+                service[i] = new BrightnessDdcService(ddcSnBus[monitorName], monitorName);
                 break;
             case "auto":
                 if (monitorSn in ddcSnBus && !!exec(`bash -c 'command -v ddcutil'`))
-                    service[i] = new BrightnessDdcService(ddcSnBus[monitorSn]);
+                    service[i] = new BrightnessDdcService(ddcSnBus[monitorName]);
                 else
                     service[i] = new BrightnessCtlService();
                 break;
