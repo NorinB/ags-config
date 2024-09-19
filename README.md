@@ -80,7 +80,7 @@
 	- cairomm
 ##### Pymyc
     - python-materialyoucolor-git
-	- gradience-git
+	- gradience
 	- python-libsass
 	- python-material-color-utilities
 ##### Python

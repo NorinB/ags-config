@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 // Import
 import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
-import App from 'resource:///com/github/Aylur/ags/app.js'
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
+import App from 'resource:///com/github/Aylur/ags/app.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 // Stuff
 import userOptions from './modules/.configuration/user_options.js';
 import { firstRunWelcome, startBatteryWarningService } from './services/messages.js';
@@ -26,17 +26,17 @@ import { setupMonitorAttached } from './services/monitor.js';
 
 const range = (length, start = 1) => Array.from({ length }, (_, i) => i + start);
 function forMonitors(widget) {
-  const n = Gdk.Display.get_default()?.get_n_monitors() || 1;
-  return range(n, 0).map(widget).flat(1);
+    const n = Gdk.Display.get_default()?.get_n_monitors() || 1;
+    return range(n, 0).map(widget).flat(1);
 }
 
 async function forMonitorsAsync(widget) {
-  const n = Gdk.Display.get_default()?.get_n_monitors() || 1;
-  let bars = [];
-  for (let index = 0; index < n; index++) {
-    bars.push(await widget(index).catch(print))
-  }
-  return bars;
+    const n = Gdk.Display.get_default()?.get_n_monitors() || 1;
+    let bars = [];
+    for (let index = 0; index < n; index++) {
+        bars.push(await widget(index).catch(print));
+    }
+    return bars;
 }
 
 export const CLOSE_ANIM_TIME = 210; // Longer than actual anim time to make sure widgets animate fully
@@ -66,11 +66,10 @@ class AGS {
         forMonitors((id) => Corner(id, 'top left', true)),
         forMonitors((id) => Corner(id, 'top right', true)),
       ] : []),
-      forMonitors((id) => Corner(id, 'bottom left', userOptions.appearance.fakeScreenRounding !== 0)),
-      forMonitors((id) => Corner(id, 'bottom right', userOptions.appearance.fakeScreenRounding !== 0)),
-      forMonitors(BarCornerTopleft),
-      forMonitors(BarCornerTopright),
+      forMonitors((id) => Corner(id, 'bottom left', true)),
+      forMonitors((id) => Corner(id, 'bottom right', true)),
       ...(await forMonitorsAsync(Bar).catch(print)),
+      ...(userOptions.appearance.barRoundCorners ? [forMonitors(BarCornerTopleft), forMonitors(BarCornerTopright)] : []),
     ];
   }
 
