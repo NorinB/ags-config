@@ -33,7 +33,7 @@ const userConfigOptions = {
     dock: {
         enabled: true,
         hiddenThickness: 5,
-        pinnedApps: ['dolphin', 'spotify', 'brave'],
+        pinnedApps: ['kitty', 'dolphin', 'spotify', 'firefox'],
         layer: 'top',
         monitorExclusivity: true, // Dock will move to other monitor along with focus if enabled
         searchPinnedAppIcons: false, // Try to search for the correct icon if the app class isn't an icon name
