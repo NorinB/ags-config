@@ -108,6 +108,12 @@
 	- hyprpicker-git
 	- anyrun-git
 
+## Troubleshooting
+- um interaktives GTK Debug Fenster zu öffnen, ags so ausführen:
+```console
+env GTK_DEBUG=interactive ags run init.js
+```
+
 ### Update
 - den Anweisungen im [Wiki](https://end-4.github.io/dots-hyprland-wiki/en/i-i/01setup/) folgen, Abschnitt "3 Updating"
 - also basically:
