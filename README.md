@@ -1,5 +1,9 @@
 # AGS Config (Desktop Oberfläche)
 
+## Install Main Package
+- aylurs-gtk-shell-git (for new ags)
+- illogical-impulse-ags (for pre v2 ags)
+
 ## Config von [end-4](https://github.com/end-4/dots-hyprland)
 ### Installation
 - Auf die Seite von von den dots gehen: https://github.com/end-4/dots-hyprland
