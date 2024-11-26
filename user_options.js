@@ -51,9 +51,6 @@ const userConfigOptions = {
         ],
     },
     icons: {
-        'trayIconSubstitutions': {
-            "state-ok": "checkmark",
-        },
         // Find the window's icon by its class with levenshteinDistance
         // The file names are processed at startup, so if there
         // are too many files in the search path it'll affect performance
