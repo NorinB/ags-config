@@ -68,7 +68,8 @@
     - polkit-gnome
     - gnome-keyring
     - gnome-control-center
-    - blueberry networkmanager
+    - blueberry
+    - networkmanager
     - gammastep
 ##### GTK
     - webp-pixbuf-loader
