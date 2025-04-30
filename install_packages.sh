@@ -55,4 +55,4 @@ packages=(
   "python-psutil"
 )
 
-yay -S --needed ${packages[@]}
+yay -S --needed "${packages[@]}"
