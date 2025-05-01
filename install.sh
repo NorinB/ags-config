@@ -1,3 +1,5 @@
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
 packages=(
   "gjs"
   "glib2"
@@ -111,6 +113,7 @@ while ! [ "$action_selection" = "q" ]; do
   read -p "Choose an action via number or enter 'q' to exit this menu: " action_selection
 
   if [ "$action_selection" = "0" ]; then
+    cd $SCRIPT_DIR
     cd ./illogical-impulse-agsv1-git
     source ./PKGBUILD
     yay -S --needed --asdeps "${depends[@]}"
