@@ -105,9 +105,18 @@ action_selection=""
 
 while ! [ "$action_selection" = "q" ]; do
   print "Select action:"
+  print "0) install custom ags needed for this config"
   print "1) install needed packages"
   print "2) uninstall needed packages"
   read -p "Choose an action via number or enter 'q' to exit this menu: " action_selection
+
+  if [ "$action_selection" = "0" ]; then
+    cd ./illogical-impulse-agsv1-git
+    source ./PKGBUILD
+    yay -S --needed --asdeps "${depends[@]}"
+    makepkg -Asi
+    cd ..
+  fi
 
   if [ "$action_selection" = "1" ]; then
     yay -S --needed "${packages[@]}"

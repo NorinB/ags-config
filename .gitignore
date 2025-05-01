@@ -3,3 +3,6 @@ types
 package-lock.json
 bun.lockb
 flake.lock
+/*/*.tar.*
+/*/pkg/
+/*/src/
