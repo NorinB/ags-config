@@ -1,7 +1,6 @@
-SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-
 packages=(
   "gjs"
+  "gvfs"
   "glib2"
   "glib2-devel"
   "glibc"
@@ -41,6 +40,7 @@ packages=(
   "gtkmm3"
   "gtksourceviewmm"
   "cairomm"
+  "plasma-browser-integration"
   "python-materialyoucolor-git"
   "gradience"
   "python-libsass"
