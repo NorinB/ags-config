@@ -116,7 +116,7 @@ const service = Array(numMonitors);
 const ddcSnBus = await listDdcMonitorsSnBus();
 for (let i = 0; i < service.length; i++) {
     const monitorName = Hyprland.monitors[i].name;
-    // const monitorSn = Hyprland.monitors[i].serial;
+    const monitorSn = Hyprland.monitors[i].serial;
     const preferredController = userOptions.brightness.controllers[monitorName]
         || userOptions.brightness.controllers.default || "auto";
     if (preferredController) {

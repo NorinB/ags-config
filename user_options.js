@@ -22,7 +22,7 @@ const userConfigOptions = {
         // 'eDP-1': "brightnessctl",
         // 'DP-1': "ddcutil",
         controllers: {
-            default: 'ddcutil',
+            default: 'auto',
         },
     },
     cheatsheet: {
