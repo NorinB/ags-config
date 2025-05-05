@@ -100,7 +100,7 @@ async function listDdcMonitorsSnBus() {
             if (!reg.test(display))
                 return;
             const lines = display.split('\n');
-            const sn = lines[2].split('card2-')[1];
+            const sn = lines[2].split('card1-')[1];
             const busNum = lines[1].split('/dev/i2c-')[1];
             ddcSnBus[sn] = busNum;
         });
@@ -117,14 +117,21 @@ const ddcSnBus = await listDdcMonitorsSnBus();
 for (let i = 0; i < service.length; i++) {
     const monitorName = Hyprland.monitors[i].name;
     const monitorSn = Hyprland.monitors[i].serial;
+  console.log("---------");
+  console.log(monitorName);
+  console.log(monitorSn);
+  console.log(userOptions.brightness.controllers);
+  console.log(userOptions.brightness.controllers[monitorName]);
     const preferredController = userOptions.brightness.controllers[monitorName]
         || userOptions.brightness.controllers.default || "auto";
     if (preferredController) {
+    console.log("Controller selected:", preferredController);
         switch (preferredController) {
             case "brightnessctl":
                 service[i] = new BrightnessCtlService();
                 break;
             case "ddcutil":
+                console.log("brightness controller ddcuitl");
                 service[i] = new BrightnessDdcService(ddcSnBus[monitorName], monitorName);
                 break;
             case "auto":

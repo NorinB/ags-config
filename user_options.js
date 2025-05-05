@@ -23,6 +23,10 @@ const userConfigOptions = {
         // 'DP-1': "ddcutil",
         controllers: {
             default: 'auto',
+            'eDP-1': 'brightnessctl',
+            'DP-1': 'ddcutil',
+            'HDMI-A-1': 'ddcutil',
+            'DP-2': 'ddcutil',
         },
     },
     cheatsheet: {
